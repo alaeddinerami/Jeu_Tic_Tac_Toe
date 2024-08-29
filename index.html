@@ -1,21 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tic Tac Toe</title>
-    <link rel="stylesheet" href="./assest/css/styles.css">
-</head>
-<body>
-    <header>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tic Tac Toe 20x20</title>
+    <link rel="stylesheet" href="./assest/css/styles.css" />
+  </head>
+  <body>
+    <div id="gameContainer" class="gameContainer">
+      <div id="scoreContainer">
+        <div class="score_bar">
+          <label> player 1: </label>
+          <span class="score">0</span>
+        </div>
 
-    </header>
-    <main>
+        <div class="score_bar">
+          <label> turn: </label>
+          <span class="score">0</span>
+        </div>
 
-    </main>
-    <footer>
-        
-    </footer>
+        <div class="score_bar">
+          <label> player 2: </label>
+          <span class="score">0</span>
+        </div>
+      </div>
+      <div class="bordContainer" id="bordContainer"></div>
+      <div class="buttons">
+        <button>Play again</button>
+        <button>History</button>
+      </div>
+    </div>
     <script src="./assest/js/script.js"></script>
-</body>
+  </body>
 </html>
