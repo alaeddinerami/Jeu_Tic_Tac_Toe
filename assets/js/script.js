@@ -38,11 +38,13 @@
               if (winner === 'X') {
                 scores[playerX]++;
                 player1Score.textContent = scores[playerX];
-                alert(`${playerX} wins!`);
+                // alert(`${playerX} wins!`);
+                showWinner(playerX);
+
               } else {
                 scores[playerO]++;
                 player2Score.textContent = scores[playerO];
-                alert(`${playerO} wins!`);
+                showWinner(playerO);
               }
               
               playersData[playersData.length - 1].scorePlayerOne = scores[playerX];
@@ -134,7 +136,9 @@
 
     
     document.getElementById('playAgain').addEventListener('click', resetGame);
-
+    document.getElementById('StartOver').addEventListener('click',e=>{
+      window.location.href = "inputs.html";
+    })
     
     updateTurnDisplay();
   });
@@ -147,7 +151,7 @@
     const historyList = document.getElementById('historyList');
   
     historyBtn.addEventListener('click', () => {
-      displayHistory();
+      displayHistory(); 
       historyModal.style.display = 'block';
     });
   
@@ -164,16 +168,40 @@
     function displayHistory() {
       const playersData = JSON.parse(localStorage.getItem('playersScores')) || [];
       historyList.innerHTML = ''; 
-  
+    
       if (playersData.length === 0) {
-        historyList.innerHTML = '<li>No game history available.</li>';
+        historyList.innerHTML = '<tr><td colspan="5">No game history available.</td></tr>';
       } else {
         playersData.forEach((game, index) => {
-          const listItem = document.createElement('li');
-          listItem.textContent = `Game ${index + 1}: ${game.playerOneName} (Score: ${game.scorePlayerOne}) vs ${game.playerTwoName} (Score: ${game.scorePlayerTwo})`;
-          historyList.appendChild(listItem);
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>Game ${index + 1}</td>
+            <td>${game.playerOneName}</td>
+            <td>${game.scorePlayerOne}</td>
+            <td>VS</td>
+            <td>${game.scorePlayerTwo}</td>
+            <td>${game.playerTwoName}</td>
+          `;
+          historyList.appendChild(row);
         });
       }
     }
   });
+
+
+
+  const winnerDisplay = document.getElementById('winnerDisplay');
+  const winnerText = document.getElementById('winnerText');
+  const closeWinnerDisplay = document.querySelector('#winnerDisplay .close');
+
+
+  function showWinner(winnerName) {
+    winnerText.textContent = `${winnerName} wins!`;
+    winnerDisplay.classList.remove('hidden');
+  }
+  closeWinnerDisplay.addEventListener('click', () => {
+    winnerDisplay.classList.add('hidden');
+  });
+
+
   

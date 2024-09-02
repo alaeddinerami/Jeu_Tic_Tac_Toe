@@ -30,14 +30,34 @@
       <div class="buttons">
         <button id="playAgain">Play again</button>
         <button id="history">History</button>
+        <button id="StartOver">Start Over</button>
       </div>
     </div>
 
-     <div id="historyModal" class="modal">
+    <div id="historyModal" class="modal">
       <div class="modal-content">
         <span class="close">&times;</span>
         <h2>Game History</h2>
-        <ul id="historyList"></ul>
+        <table id="historyTable">
+          <thead>
+            <tr>
+              <th>Game</th>
+              <th>Player One</th>
+              <th>Score One</th>
+              <th>VS</th>
+              <th>Score Two</th>
+              <th>Player Two</th>
+            </tr>
+          </thead>
+          <tbody id="historyList">
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div id="winnerDisplay" class="winner-display hidden">
+      <div class="winner-content">
+        <span class="close">&times;</span>
+        <span id="winnerText"></span>
       </div>
     </div>
     <script src="./assets/js/script.js"></script>
