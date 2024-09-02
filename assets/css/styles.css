@@ -168,12 +168,18 @@ body {
 }
 
 .winner-content {
+  width: 400px;
   background: #fff;
   padding: 20px;
   border-radius: 8px;
   text-align: center;
+  position: relative;
 }
-
+.winner-content .close{
+  position: absolute;
+  top: 0;
+  right: 10px;
+}
 .winner-content span {
   font-size: 24px;
   display: block;
