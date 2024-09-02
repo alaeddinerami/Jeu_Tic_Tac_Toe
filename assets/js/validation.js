@@ -7,33 +7,46 @@ const errorNameOne = document.querySelector("#errorNameOne");
 const errorNameTwo = document.querySelector("#errorNameTwo");
 
 form.addEventListener("submit", (e) => {
-  e.preventDefault(); 
+  e.preventDefault();
 
   const nameCheck = /^[a-zA-Z]/;
 
-  
   errorNameOne.innerText = "";
   errorNameTwo.innerText = "";
 
   let isValid = true;
 
   if (!playerOne.value.match(nameCheck)) {
-    errorNameOne.innerText = "Le nom doit contenir au moins 8 caractères.";
+    errorNameOne.innerText = "name format incorrect";
     errorNameOne.style.display = "block";
     errorNameOne.style.color = "red";
     isValid = false;
   }
 
   if (!playerTwo.value.match(nameCheck)) {
-    errorNameTwo.innerText = "Le nom doit contenir au moins 8 caractères.";
+    errorNameTwo.innerText = "name format incorrect";
     errorNameTwo.style.display = "block";
     errorNameTwo.style.color = "red";
     isValid = false;
   }
 
   if (isValid) {
-    localStorage.setItem("playerOne", playerOne.value);
-    localStorage.setItem("playerTow", playerTwo.value);
+    let playersScores = JSON.parse(localStorage.getItem("playersScores")) || [];
+
+    const newPlayerRecord = {
+      playerOneName: playerOne.value,
+      scorePlayerOne: 0,
+      playerTwoName: playerTwo.value,
+      scorePlayerTwo: 0,
+    };
+  
+    playersScores.push(newPlayerRecord);
+  
+    localStorage.setItem("playersScores", JSON.stringify(playersScores));
+  
+    alert('Players have been added and saved!');
+   
+
 
     window.location.href = "index.html";
   }
