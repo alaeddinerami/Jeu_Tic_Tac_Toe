@@ -43,8 +43,6 @@ form.addEventListener("submit", (e) => {
     playersScores.push(newPlayerRecord);
   
     localStorage.setItem("playersScores", JSON.stringify(playersScores));
-  
-    alert('Players have been added and saved!');
    
 
 
